@@ -2,6 +2,8 @@
 
 # 10 statements for insertion.
 
+``` SQL
+
 INSERT INTO `bookingservice`.`User` (`user_id`, `first_name`, `last_name`, `password`, `email`) 
 VALUES (1, 'Cole', 'Warner', 'password', '19cowarner@gmail.com');
 
@@ -47,7 +49,11 @@ VALUES (1, 1, 'B', 30);
 INSERT INTO `bookingservice`.`Luggage` (`luggage_id`, `passenger_id`, `luggage_type`)
 VALUES (1, 1, 'carry-on');
 
+```
+
 # 10 statements for updating.
+
+``` SQL
 
 UPDATE `bookingservice`.`User`
 SET `email` = 'cole24777@gmail.com'
@@ -89,7 +95,11 @@ UPDATE `bookingservice`.`Luggage`
 SET `luggage_type` = 'checked'
 WHERE `luggage_id` = 1;
 
+```
+
 # 10 statements for deletions.
+
+``` SQL
 
 DELETE FROM `bookingservice`.`User`
 WHERE `user_id` = 1;
@@ -121,7 +131,11 @@ WHERE `flight_id` = 1;
 DELETE FROM `bookingservice`.`FlightPricings`
 WHERE `flight_pricing_id` = 1;
 
+```
+
 # 5 alter table.
+
+``` SQL
 
 ALTER TABLE `bookingservice`.`User`
 ADD COLUMN `phone_number` VARCHAR(45) NULL AFTER `email`;
@@ -141,7 +155,11 @@ MODIFY COLUMN 'airport_state' VARCHAR(45) NOT NULL;
 ALTER TABLE `bookingservice`.`bookingservice`.`Airports`
 DROP COLUMN 'airport_state';
 
+```
+
 # 1 big statement to join all tables in the database.
+
+``` SQL
 
 SELECT 
     U.user_id,
@@ -189,7 +207,10 @@ LEFT JOIN
 ORDER BY 
     B.booking_date, U.user_id;
 
+```
 # 5 statements with left, right, inner, outer joins.
+
+``` SQL
 
 -- Left Join
 SELECT 
@@ -213,7 +234,11 @@ FROM
 RIGHT JOIN 
     bookingservice.User U ON B.user_id = U.user_id;
 
+```
+
 -- Inner Join
+
+``` SQL
 
 SELECT 
     P.passenger_id,
@@ -250,7 +275,11 @@ FROM
 RIGHT JOIN 
     bookingservice.Bookings B ON U.user_id = B.user_id;
 
+```
+
 -- Cross Join
+
+``` SQL
 
 SELECT 
     U.first_name,
@@ -262,7 +291,11 @@ CROSS JOIN
 
 # 7 statements with aggregate functions and group by and without having.
 
+```
+
 -- Count total users
+
+``` SQL
 SELECT 
     COUNT(*) AS total_users
 FROM 
@@ -319,7 +352,11 @@ FROM
 GROUP BY 
     class;
 
+```
+
 # 7 statements with aggregate functions and group by and with having.
+
+``` SQL
 
 -- users with more than 1 booking
 SELECT 
@@ -394,6 +431,8 @@ GROUP BY
     U.user_id, U.first_name
 HAVING 
     SUM(P.amount) > 500;
+
+```
 
 # Questions
 
