@@ -1,8 +1,11 @@
-#topic 11
+# topic 11
 
-[model diagram]()
-[create_script]()
-[model]()
+![model diagram](https://github.com/colewarner24/solvd_ta_part_2/blob/main/topic11/model_diagram.png)
+
+[create_script](https://github.com/colewarner24/solvd_ta_part_2/blob/main/topic11/create_script)
+
+[model](https://github.com/colewarner24/solvd_ta_part_2/blob/main/travel_service_model.mwb)
+
 
 # 1. What database types do you know? What are the differences between them?
 relational database - structured using tables, columns and rows with relationships defined with primary and foriegn keys.
