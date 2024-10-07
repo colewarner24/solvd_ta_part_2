@@ -2,143 +2,143 @@
 
 # 10 statements for insertion.
 
-INSERT INTO `mydb`.`User` (`user_id`, `first_name`, `last_name`, `password`, `email`) 
+INSERT INTO `bookingservice`.`User` (`user_id`, `first_name`, `last_name`, `password`, `email`) 
 VALUES (1, 'Cole', 'Warner', 'password', '19cowarner@gmail.com');
 
-INSERT INTO `mydb`.`Airlines` (`airline_id`, `airline_name`) 
+INSERT INTO `bookingservice`.`Airlines` (`airline_id`, `airline_name`) 
 VALUES (1, 'SouthWest');
 
-INSERT INTO `mydb`.`Airports` (`airport_id`, `airport_name`, `airport_city`, `airport_code`, `airport_country`) 
+INSERT INTO `bookingservice`.`Airports` (`airport_id`, `airport_name`, `airport_city`, `airport_code`, `airport_country`) 
 VALUES (1, 'Los Angeles International Airport', 'Los Angeles', 'LAX', 'USA');
 
-INSERT INTO `mydb`.`Airports` (`airport_id`, `airport_name`, `airport_city`, `airport_code`, `airport_country`)
+INSERT INTO `bookingservice`.`Airports` (`airport_id`, `airport_name`, `airport_city`, `airport_code`, `airport_country`)
 VALUES (2, 'San Francisco International Airport', 'San Francisco', 'SFO', 'USA');
 
-INSERT INTO `mydb`.`Flights` (`flight_id`, `airline_id`, `departure_airport_id`, `arrival_airport_id`, `departure_time`, `flight_number`, `arrival_time`) 
+INSERT INTO `bookingservice`.`Flights` (`flight_id`, `airline_id`, `departure_airport_id`, `arrival_airport_id`, `departure_time`, `flight_number`, `arrival_time`) 
 VALUES (1, 1, 1, 2, '2024-10-10 08:00:00', '4711', '2024-10-10 12:00:00');
 
-INSERT INTO `mydb`.`Bookings` (`booking_id`, `user_id`, `flight_id`, `booking_date`, `checked_in`) 
+INSERT INTO `bookingservice`.`Bookings` (`booking_id`, `user_id`, `flight_id`, `booking_date`, `checked_in`) 
 VALUES (1, 1, 1, '2024-09-30 10:00:00', 0);
 
-INSERT INTO `mydb`.`Passengers` (`passenger_id`, `booking_id`, `user_id`) 
+INSERT INTO `bookingservice`.`Passengers` (`passenger_id`, `booking_id`, `user_id`) 
 VALUES (1, 1, 1);
 
-INSERT INTO `mydb`.`Seats` (`seat_id`, `flight_id`, `seat_number`, `class`, `available`) 
+INSERT INTO `bookingservice`.`Seats` (`seat_id`, `flight_id`, `seat_number`, `class`, `available`) 
 VALUES (1, 1, '12A', 'economy', 1);
 
-INSERT INTO `mydb`.`PassengerSeats` (`passenger_seat_id`, `passenger_id`, `seat_id`) 
+INSERT INTO `bookingservice`.`PassengerSeats` (`passenger_seat_id`, `passenger_id`, `seat_id`) 
 VALUES (1, 1, 1);
 
-INSERT INTO `mydb`.`Payments` (`payment_id`, `booking_id`, `amount`, `payment_date`) 
+INSERT INTO `bookingservice`.`Payments` (`payment_id`, `booking_id`, `amount`, `payment_date`) 
 VALUES (1, 1, 200.00, '2024-09-30 12:00:00');
 
-INSERT INTO `mydb`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
+INSERT INTO `bookingservice`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
 VALUES (1, 1, 300.00, 'economy');
 
-INSERT INTO `mydb`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
+INSERT INTO `bookingservice`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
 VALUES (1, 1, 450.00, 'first');
 
-INSERT INTO `mydb`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
+INSERT INTO `bookingservice`.`FlightPricings` (`flight_pricing_id`, `flight_id`, `price`, `class`) 
 VALUES (1, 1, 401.00, 'business');
 
-INSERT INTO `mydb`.`BoardingGroup` (`boarding_group_id`, `flight_id`, `group`, `position`)
+INSERT INTO `bookingservice`.`BoardingGroup` (`boarding_group_id`, `flight_id`, `group`, `position`)
 VALUES (1, 1, 'B', 30);
 
-INSERT INTO `mydb`.`Luggage` (`luggage_id`, `passenger_id`, `luggage_type`)
+INSERT INTO `bookingservice`.`Luggage` (`luggage_id`, `passenger_id`, `luggage_type`)
 VALUES (1, 1, 'carry-on');
 
 # 10 statements for updating.
 
-UPDATE `mydb`.`User`
+UPDATE `bookingservice`.`User`
 SET `email` = 'cole24777@gmail.com'
 WHERE `user_id` = 1;
 
-UPDATE `mydb`.`User`
+UPDATE `bookingservice`.`User`
 SET `password` = 'newpassword'
 WHERE `user_id` = 1;
 
-UPDATE `mydb`.`Flights`
+UPDATE `bookingservice`.`Flights`
 SET `departure_time` = '2024-10-10 09:00:00'
 WHERE `flight_id` = 1;
 
-UPDATE `mydb`.`Flights`
+UPDATE `bookingservice`.`Flights`
 SET `arrival_time` = '2024-10-10 012:30:00'
 WHERE `flight_id` = 1;
 
-UPDATE `mydb`.`Bookings`
+UPDATE `bookingservice`.`Bookings`
 SET `checked_in` = 1
 WHERE `booking_id` = 1;
 
-UPDATE `mydb`.`Seats`
+UPDATE `bookingservice`.`Seats`
 SET `available` = 0
 WHERE `seat_id` = 1;
 
-UPDATE `mydb`.`Payments`
+UPDATE `bookingservice`.`Payments`
 SET `amount` = 250.00
 WHERE `payment_id` = 1;
 
-UPDATE `mydb`.`FlightPricings`
+UPDATE `bookingservice`.`FlightPricings`
 SET `price` = 350.00
 WHERE `flight_id` = 1 AND `class` = 'economy';
 
-UPDATE `mydb`.`BoardingGroup`
+UPDATE `bookingservice`.`BoardingGroup`
 SET `position` = 25, `group` = 'A'
 WHERE `boarding_group_id` = 1;
 
-UPDATE `mydb`.`Luggage`
+UPDATE `bookingservice`.`Luggage`
 SET `luggage_type` = 'checked'
 WHERE `luggage_id` = 1;
 
 # 10 statements for deletions.
 
-DELETE FROM `mydb`.`User`
+DELETE FROM `bookingservice`.`User`
 WHERE `user_id` = 1;
 
-DELETE FROM `mydb`.`Airlines`
+DELETE FROM `bookingservice`.`Airlines`
 WHERE `airline_id` = 1;
 
-DELETE FROM `mydb`.`Airports`
+DELETE FROM `bookingservice`.`Airports`
 WHERE `airport_id` = 1;
 
-DELETE FROM `mydb`.`Airports`
+DELETE FROM `bookingservice`.`Airports`
 WHERE `airport_id` = 2;
 
-DELETE FROM `mydb`.`Flights`
+DELETE FROM `bookingservice`.`Flights`
 WHERE `flight_arrival_time` < '2024-10-11 12:00:00';
 
-DELETE FROM `mydb`.`Bookings`
+DELETE FROM `bookingservice`.`Bookings`
 WHERE `flight_id` = 1;
 
-DELETE FROM `mydb`.`Passengers`
+DELETE FROM `bookingservice`.`Passengers`
 WHERE `passenger_id` = 1;
 
-DELETE FROM `mydb`.`Seats`
+DELETE FROM `bookingservice`.`Seats`
 WHERE `seat_id` = 1;
 
-DELETE FROM `mydb`.`PassengerSeats`
+DELETE FROM `bookingservice`.`PassengerSeats`
 WHERE `flight_id` = 1;
 
-DELETE FROM `mydb`.`FlightPricings`
+DELETE FROM `bookingservice`.`FlightPricings`
 WHERE `flight_pricing_id` = 1;
 
 # 5 alter table.
 
-ALTER TABLE `mydb`.`User`
+ALTER TABLE `bookingservice`.`User`
 ADD COLUMN `phone_number` VARCHAR(45) NULL AFTER `email`;
 
-ALTER TABLE `mydb`.`User`
+ALTER TABLE `bookingservice`.`User`
 MODIFY COLUMN 'phone_number' VARCHAR(45) NOT NULL;
 
-ALTER TABLE `mydb`.`User`
+ALTER TABLE `bookingservice`.`User`
 DROP COLUMN 'phone_number';
 
-ALTER TABLE `mydb`.`mydb`.`Airports`
+ALTER TABLE `bookingservice`.`bookingservice`.`Airports`
 ADD COLUMN `airport_state` VARCHAR(45) NULL AFTER `airport_city`;
 
-ALTER TABLE `mydb`.`mydb`.`Airports`
+ALTER TABLE `bookingservice`.`bookingservice`.`Airports`
 MODIFY COLUMN 'airport_state' VARCHAR(45) NOT NULL;
 
-ALTER TABLE `mydb`.`mydb`.`Airports`
+ALTER TABLE `bookingservice`.`bookingservice`.`Airports`
 DROP COLUMN 'airport_state';
 
 # 1 big statement to join all tables in the database.
@@ -165,27 +165,27 @@ SELECT
     PAY.amount AS payment_amount,
     PAY.payment_date
 FROM 
-    mydb.User U
+    bookingservice.User U
 JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 JOIN 
-    mydb.Flights F ON B.flight_id = F.flight_id
+    bookingservice.Flights F ON B.flight_id = F.flight_id
 JOIN 
-    mydb.Airlines A ON F.airline_id = A.airline_id
+    bookingservice.Airlines A ON F.airline_id = A.airline_id
 JOIN 
-    mydb.Airports AP1 ON F.departure_airport_id = AP1.airport_id
+    bookingservice.Airports AP1 ON F.departure_airport_id = AP1.airport_id
 JOIN 
-    mydb.Airports AP2 ON F.arrival_airport_id = AP2.airport_id
+    bookingservice.Airports AP2 ON F.arrival_airport_id = AP2.airport_id
 JOIN 
-    mydb.Passengers P ON B.booking_id = P.booking_id
+    bookingservice.Passengers P ON B.booking_id = P.booking_id
 JOIN 
-    mydb.PassengerSeats PS ON P.passenger_id = PS.passenger_id
+    bookingservice.PassengerSeats PS ON P.passenger_id = PS.passenger_id
 JOIN 
-    mydb.Seats S ON PS.seat_id = S.seat_id
+    bookingservice.Seats S ON PS.seat_id = S.seat_id
 JOIN 
-    mydb.Payments PAY ON B.booking_id = PAY.booking_id
+    bookingservice.Payments PAY ON B.booking_id = PAY.booking_id
 LEFT JOIN 
-    mydb.Luggage L ON P.passenger_id = L.passenger_id 
+    bookingservice.Luggage L ON P.passenger_id = L.passenger_id 
 ORDER BY 
     B.booking_date, U.user_id;
 
@@ -199,9 +199,9 @@ SELECT
     B.booking_id,
     B.booking_date
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id;
+    bookingservice.Bookings B ON U.user_id = B.user_id;
 
 -- Right Join
 SELECT 
@@ -209,9 +209,9 @@ SELECT
     U.first_name,
     U.last_name
 FROM 
-    mydb.Bookings B
+    bookingservice.Bookings B
 RIGHT JOIN 
-    mydb.User U ON B.user_id = U.user_id;
+    bookingservice.User U ON B.user_id = U.user_id;
 
 -- Inner Join
 
@@ -220,11 +220,11 @@ SELECT
     B.booking_id,
     F.flight_number
 FROM 
-    mydb.Passengers P
+    bookingservice.Passengers P
 INNER JOIN 
-    mydb.Bookings B ON P.booking_id = B.booking_id
+    bookingservice.Bookings B ON P.booking_id = B.booking_id
 INNER JOIN 
-    mydb.Flights F ON B.flight_id = F.flight_id;
+    bookingservice.Flights F ON B.flight_id = F.flight_id;
 
 -- Outer Join
 
@@ -234,9 +234,9 @@ SELECT
     B.booking_id,
     B.booking_date
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 
 UNION
 
@@ -246,9 +246,9 @@ SELECT
     B.booking_id,
     B.booking_date
 FROM 
-    mydb.User U
+    bookingservice.User U
 RIGHT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id;
+    bookingservice.Bookings B ON U.user_id = B.user_id;
 
 -- Cross Join
 
@@ -256,9 +256,9 @@ SELECT
     U.first_name,
     F.flight_number
 FROM 
-    mydb.User U
+    bookingservice.User U
 CROSS JOIN 
-    mydb.Flights F;
+    bookingservice.Flights F;
 
 # 7 statements with aggregate functions and group by and without having.
 
@@ -266,7 +266,7 @@ CROSS JOIN
 SELECT 
     COUNT(*) AS total_users
 FROM 
-    mydb.User;
+    bookingservice.User;
 
 -- Count total bookings
 SELECT 
@@ -274,9 +274,9 @@ SELECT
     U.first_name,
     COUNT(B.booking_id) AS total_bookings
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 GROUP BY 
     U.user_id, U.first_name;
 
@@ -285,7 +285,7 @@ SELECT
     class,
     AVG(price) AS average_price
 FROM 
-    mydb.FlightPricings
+    bookingservice.FlightPricings
 GROUP BY 
     class;
 
@@ -294,9 +294,9 @@ SELECT
     A.airline_name,
     COUNT(F.flight_id) AS total_flights
 FROM 
-    mydb.Airlines A
+    bookingservice.Airlines A
 LEFT JOIN 
-    mydb.Flights F ON A.airline_id = F.airline_id
+    bookingservice.Flights F ON A.airline_id = F.airline_id
 GROUP BY 
     A.airline_id, A.airline_name;
 
@@ -305,7 +305,7 @@ SELECT
     luggage_type,
     COUNT(*) AS total_luggage
 FROM 
-    mydb.Luggage
+    bookingservice.Luggage
 GROUP BY 
     luggage_type;
 
@@ -315,7 +315,7 @@ SELECT
     MAX(available) AS max_available,
     MIN(available) AS min_available
 FROM 
-    mydb.Seats
+    bookingservice.Seats
 GROUP BY 
     class;
 
@@ -327,9 +327,9 @@ SELECT
     U.first_name,
     COUNT(B.booking_id) AS total_bookings
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 GROUP BY 
     U.user_id, U.first_name
 HAVING 
@@ -341,11 +341,11 @@ SELECT
     F.flight_number,
     COUNT(P.passenger_id) AS total_passengers
 FROM
-    mydb.Flights F
+    bookingservice.Flights F
 LEFT JOIN
-    mydb.Bookings B ON F.flight_id = B.flight_id
+    bookingservice.Bookings B ON F.flight_id = B.flight_id
 LEFT JOIN
-    mydb.Passengers P ON B.booking_id = P.booking_id
+    bookingservice.Passengers P ON B.booking_id = P.booking_id
 GROUP BY
     F.flight_id, F.flight_number
 HAVING
@@ -356,7 +356,7 @@ SELECT
     class,
     AVG(price) AS average_price
 FROM 
-    mydb.FlightPricings
+    bookingservice.FlightPricings
 GROUP BY 
     class
 HAVING 
@@ -369,9 +369,9 @@ SELECT
     U.first_name,
     COUNT(B.booking_id) AS total_bookings
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 WHERE 
     U.email LIKE '%@gmail.com'
 GROUP BY 
@@ -385,11 +385,11 @@ SELECT
     U.first_name,
     SUM(P.amount) AS total_payments
 FROM 
-    mydb.User U
+    bookingservice.User U
 LEFT JOIN 
-    mydb.Bookings B ON U.user_id = B.user_id
+    bookingservice.Bookings B ON U.user_id = B.user_id
 LEFT JOIN 
-    mydb.Payments P ON B.booking_id = P.booking_id
+    bookingservice.Payments P ON B.booking_id = P.booking_id
 GROUP BY 
     U.user_id, U.first_name
 HAVING 
