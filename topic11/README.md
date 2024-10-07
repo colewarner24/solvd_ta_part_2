@@ -2,6 +2,7 @@
 
 [model diagram]()
 [create_script]()
+[model]()
 
 # 1. What database types do you know? What are the differences between them?
 relational database - structured using tables, columns and rows with relationships defined with primary and foriegn keys.
