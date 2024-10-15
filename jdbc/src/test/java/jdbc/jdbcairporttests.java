@@ -1,14 +1,12 @@
 package booking.service;
 
 import booking.constant.ProjectConstant.FactoryType;
-import booking.dao.AirportDAO;
 import booking.exception.DAOException;
 import booking.model.Airport;
 import booking.services.AirportService;
 import booking.factory.DAOFactory;
 import org.junit.Before;
 import org.junit.Test;
-import booking.constant.ProjectConstant.FactoryType;
 
 import java.sql.SQLException;
 
@@ -22,10 +20,10 @@ public class jdbcairporttests {
     @Before
     public void setUp() throws DAOException, SQLException {
         this.airportService = new AirportService(DAOFactory.getDAOFactory(FactoryType.MYSQL));
-        airportService.removeAllAirports();
+        airportService.deleteAllAirports();
 
         airport1 = new Airport("Los Angeles International Airport", "Los Angeles", "LAX", "USA");
-        airportService.addAirport(airport1);
+        airportService.createAirport(airport1);
     }
 
     @Test
@@ -45,14 +43,14 @@ public class jdbcairporttests {
 
     @Test
     public void testDeleteAirport() {
-        airportService.removeAirport(airport1.getId());
+        airportService.deleteAirport(airport1.getId());
 
         assertThrows(DAOException.class, () -> airportService.getAirportById(airport1.getId()));
     }
 
     @Test
     public void testRemoveAllAirports() {
-        airportService.removeAllAirports();
+        airportService.deleteAllAirports();
         assert airportService.getAllAirports().isEmpty();
     }
 }

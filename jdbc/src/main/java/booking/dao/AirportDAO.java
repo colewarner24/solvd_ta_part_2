@@ -5,7 +5,7 @@ import booking.model.Airport;
 import java.util.List;
 import java.util.Optional;
 
-public interface AirportDAO {
+public interface AirportDAO extends GenericDAO {
 
     void insert(Airport airport);
 
@@ -15,7 +15,4 @@ public interface AirportDAO {
 
     void update(Airport airport);
 
-    void delete(int id);
-
-    void deleteAll();
 }

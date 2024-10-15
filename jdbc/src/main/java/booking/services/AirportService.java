@@ -17,7 +17,7 @@ public class AirportService {
         this.airportDAO = daoFactory.getAirportDAO();
     }
 
-    public void addAirport(Airport airport) {
+    public void createAirport(Airport airport) {
         airportDAO.insert(airport);
     }
 
@@ -33,11 +33,11 @@ public class AirportService {
         airportDAO.update(airport);
     }
 
-    public void removeAirport(int id) {
+    public void deleteAirport(int id) {
         airportDAO.delete(id);
     }
 
-    public void removeAllAirports() {
+    public void deleteAllAirports() {
         airportDAO.deleteAll();
     }
 }

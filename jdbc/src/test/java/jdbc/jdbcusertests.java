@@ -9,7 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThrows;
 
 public class jdbcusertests {
@@ -28,8 +32,9 @@ public class jdbcusertests {
 
     @Test
     public void testCreateUser() {
-        User db_user = userService.getUser(user1.getId());
-        assert user1.equals(db_user);
+        Optional<User> db_user = userService.getUser(user1.getId());
+        assertTrue(db_user.isPresent());
+        assertEquals(user1, db_user.get());
     }
 
     @Test
@@ -37,20 +42,22 @@ public class jdbcusertests {
         User user = new User(user1.getId(), user1.getFirstName(), user1.getLastName(), "cole24777@gmail.com", user1.getPassword());
 
         userService.updateUser(user);
-        User db_user = userService.getUser(user1.getId());
-        assert user.equals(db_user);
+        Optional<User> db_user = userService.getUser(user1.getId());
+        assertTrue(db_user.isPresent());
+        assertEquals(user, db_user.get());
     }
 
     @Test
     public void testDeleteUser() {
         userService.deleteUser(user1.getId());
 
-        assertThrows(DAOException.class, () -> userService.getUser(user1.getId()));
+        Optional<User> db_user = userService.getUser(user1.getId());
+        assertFalse(db_user.isPresent());
     }
 
     @Test
     public void testDeleteAll() {
         userService.deleteAllUsers();
-        assert userService.getAllUsers().isEmpty();
+        assertTrue(userService.getAllUsers().isEmpty());
     }
 }

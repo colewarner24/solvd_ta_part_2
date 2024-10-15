@@ -8,6 +8,7 @@ import booking.model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import booking.constant.ProjectConstant;
@@ -19,7 +20,6 @@ public class MySQLUserDAO implements UserDAO {
 
     static Logger logger = Logger.getLogger(DBConnection.class.getName());
 
-    // Method to get all users
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         String query = "SELECT * FROM User";
@@ -30,50 +30,33 @@ public class MySQLUserDAO implements UserDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                User user = new User(rs.getInt("user_id")
-                        , rs.getString("first_name")
-                        , rs.getString("last_name")
-                        , rs.getString("email")
-                        , rs.getString("password"));
-                users.add(user);
+                users.add(mapRowToUser(rs));
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe("Failed to get all users: " + e);
+            throw new DAOException(e);
         }
         return users;
     }
 
-    // Method to get a user by ID
-    public User findById(Integer userId) {
-        User user = null;
+    public Optional<User> findById(Integer userId) {
         try (Connection connection = DBConnection.getConnection();
-             PreparedStatement preparedStatement = prepareStatement(connection, ProjectConstant.USER_FIND_BY_ID, false, userId);) {
+             PreparedStatement preparedStatement = prepareStatement(connection, ProjectConstant.USER_FIND_BY_ID, false)) {
 
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                user = new User(rs.getInt("user_id")
-                        , rs.getString("first_name")
-                        , rs.getString("last_name")
-                        , rs.getString("email")
-                        , rs.getString("password"));
-
+                return Optional.of(mapRowToUser(rs));
             }
-
         } catch (SQLException e) {
             logger.severe("Failed to find user: " + e);
             throw new DAOException(e);
         }
-        if (user == null) {
-            logger.severe("User not found");
-            throw new DAOException("User not found");
-        }
-        return user;
+        return Optional.empty();
     }
 
-    // Method to create a user
     public void create(User user) {
         if (user.getId() > 0) {
             throw new IllegalArgumentException("User is already created");
@@ -96,7 +79,6 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     public void update(User user) {
-
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = prepareStatement(connection, ProjectConstant.USER_UPDATE, false)) {
 
@@ -114,9 +96,7 @@ public class MySQLUserDAO implements UserDAO {
         }
     }
 
-    // Method to delete a user by ID
     public void delete(Integer userId) {
-
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = prepareStatement(connection, ProjectConstant.USER_DELETE, false)) {
 
@@ -130,7 +110,6 @@ public class MySQLUserDAO implements UserDAO {
     }
 
     public void deleteAll() {
-
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = prepareStatement(connection, ProjectConstant.USER_DELETE_ALL, false)) {
 
@@ -141,5 +120,14 @@ public class MySQLUserDAO implements UserDAO {
             throw new DAOException(e);
         }
     }
-}
 
+    private User mapRowToUser(ResultSet rs) throws SQLException {
+        return new User(
+                rs.getInt("user_id"),
+                rs.getString("first_name"),
+                rs.getString("last_name"),
+                rs.getString("email"),
+                rs.getString("password")
+        );
+    }
+}

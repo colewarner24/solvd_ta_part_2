@@ -86,7 +86,7 @@ public class MySQLAirportDAO implements AirportDAO {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Integer id) {
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = prepareStatement(connection, AIRPORTS_DELETE, false)) {
             statement.setInt(1, id);

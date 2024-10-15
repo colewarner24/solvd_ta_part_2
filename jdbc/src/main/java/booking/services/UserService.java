@@ -8,6 +8,7 @@ import booking.model.User;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class UserService {
 
@@ -25,7 +26,7 @@ public class UserService {
         userDAO.create(user);
     }
 
-    public User getUser(Integer id) {
+    public Optional<User> getUser(Integer id) {
         return userDAO.findById(id);
     }
 

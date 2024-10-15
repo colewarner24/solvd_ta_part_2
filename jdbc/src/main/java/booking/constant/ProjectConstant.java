@@ -31,12 +31,12 @@ public final class ProjectConstant {
     public static final String AIRPORTS_DELETE = "DELETE FROM airports WHERE airport_id = ?";
     public static final String AIRPORTS_DELETE_ALL = "DELETE FROM airports";
 
-    public static final String BOARDING_GROUP_SQL_INSERT = "INSERT INTO boarding_group (flight_id, group, position) VALUES (?, ?, ?)";
-    public static final String BOARDING_GROUP_FIND_BY_ID = "SELECT * FROM boarding_group WHERE boarding_group_id = ?";
-    public static final String BOARDING_GROUP_FIND_ALL = "SELECT * FROM boarding_group";
-    public static final String BOARDING_GROUP_UPDATE = "UPDATE boarding_group SET flight_id = ?, group = ?, position = ? WHERE boarding_group_id = ?";
-    public static final String BOARDING_GROUP_DELETE = "DELETE FROM boarding_group WHERE boarding_group_id = ?";
-    public static final String BOARDING_GROUP_DELETE_ALL = "DELETE FROM boarding_group";
+    public static final String BOARDING_GROUP_SQL_INSERT = "INSERT INTO boardinggroup (flight_id, `group`, position) VALUES (?, ?, ?)";
+    public static final String BOARDING_GROUP_FIND_BY_ID = "SELECT * FROM boardinggroup WHERE boarding_group_id = ?";
+    public static final String BOARDING_GROUP_FIND_ALL = "SELECT * FROM boardinggroup";
+    public static final String BOARDING_GROUP_UPDATE = "UPDATE boardinggroup SET flight_id = ?, `group` = ?, position = ? WHERE boarding_group_id = ?";
+    public static final String BOARDING_GROUP_DELETE = "DELETE FROM boardinggroup WHERE boarding_group_id = ?";
+    public static final String BOARDING_GROUP_DELETE_ALL = "DELETE FROM boardinggroup";
 
     public static final String BOOKINGS_SQL_INSERT = "INSERT INTO bookings (user_id, flight_id, booking_date, checked_in) VALUES (?, ?, ?, ?)";
     public static final String BOOKINGS_FIND_BY_ID = "SELECT * FROM bookings WHERE booking_id = ?";
@@ -45,12 +45,12 @@ public final class ProjectConstant {
     public static final String BOOKINGS_DELETE = "DELETE FROM bookings WHERE booking_id = ?";
     public static final String BOOKINGS_DELETE_ALL = "DELETE FROM bookings";
 
-    public static final String FLIGHT_PRICING_SQL_INSERT = "INSERT INTO flight_pricings (flight_id, price, class) VALUES (?, ?, ?)";
-    public static final String FLIGHT_PRICING_FIND_BY_ID = "SELECT * FROM flight_pricings WHERE flight_pricing_id = ?";
-    public static final String FLIGHT_PRICING_FIND_ALL = "SELECT * FROM flight_pricings";
-    public static final String FLIGHT_PRICING_UPDATE = "UPDATE flight_pricings SET flight_id = ?, price = ?, class = ? WHERE flight_pricing_id = ?";
-    public static final String FLIGHT_PRICING_DELETE = "DELETE FROM flight_pricings WHERE flight_pricing_id = ?";
-    public static final String FLIGHT_PRICING_DELETE_ALL = "DELETE FROM flight_pricings";
+    public static final String FLIGHT_PRICING_SQL_INSERT = "INSERT INTO flightpricings (flight_id, price, class) VALUES (?, ?, ?)";
+    public static final String FLIGHT_PRICING_FIND_BY_ID = "SELECT * FROM flightpricings WHERE flight_pricing_id = ?";
+    public static final String FLIGHT_PRICING_FIND_ALL = "SELECT * FROM flightpricings";
+    public static final String FLIGHT_PRICING_UPDATE = "UPDATE flightpricings SET flight_id = ?, price = ?, class = ? WHERE flight_pricing_id = ?";
+    public static final String FLIGHT_PRICING_DELETE = "DELETE FROM flightpricings WHERE flight_pricing_id = ?";
+    public static final String FLIGHT_PRICING_DELETE_ALL = "DELETE FROM flightpricings";
 
     public static final String FLIGHTS_SQL_INSERT = "INSERT INTO flights (airline_id, departure_airport_id, arrival_airport_id, departure_time, flight_number, arrival_time) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String FLIGHTS_FIND_BY_ID = "SELECT * FROM flights WHERE flight_id = ?";
@@ -73,12 +73,12 @@ public final class ProjectConstant {
     public static final String PASSENGERS_DELETE = "DELETE FROM passengers WHERE passenger_id = ?";
     public static final String PASSENGERS_DELETE_ALL = "DELETE FROM passengers";
 
-    public static final String PASSENGER_SEATS_SQL_INSERT = "INSERT INTO passenger_seats (passenger_id, seat_number) VALUES (?, ?)";
-    public static final String PASSENGER_SEATS_FIND_BY_ID = "SELECT * FROM passenger_seats WHERE passenger_seat_id = ?";
-    public static final String PASSENGER_SEATS_FIND_ALL = "SELECT * FROM passenger_seats";
-    public static final String PASSENGER_SEATS_UPDATE = "UPDATE passenger_seats SET passenger_id = ?, seat_number = ? WHERE passenger_seat_id = ?";
-    public static final String PASSENGER_SEATS_DELETE = "DELETE FROM passenger_seats WHERE passenger_seat_id = ?";
-    public static final String PASSENGER_SEATS_DELETE_ALL = "DELETE FROM passenger_seats";
+    public static final String PASSENGER_SEATS_SQL_INSERT = "INSERT INTO passengerseats (passenger_id, seat_number) VALUES (?, ?)";
+    public static final String PASSENGER_SEATS_FIND_BY_ID = "SELECT * FROM passengerseats WHERE passenger_seat_id = ?";
+    public static final String PASSENGER_SEATS_FIND_ALL = "SELECT * FROM passengerseats";
+    public static final String PASSENGER_SEATS_UPDATE = "UPDATE passengerseats SET passenger_id = ?, seat_number = ? WHERE passenger_seat_id = ?";
+    public static final String PASSENGER_SEATS_DELETE = "DELETE FROM passengerseats WHERE passenger_seat_id = ?";
+    public static final String PASSENGER_SEATS_DELETE_ALL = "DELETE FROM passengerseats";
 
     public static final String PAYMENTS_SQL_INSERT = "INSERT INTO payments (booking_id, amount, payment_date) VALUES (?, ?, ?)";
     public static final String PAYMENTS_FIND_BY_ID = "SELECT * FROM payments WHERE payment_id = ?";

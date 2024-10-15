@@ -13,7 +13,5 @@ public class Main {
         User user = new User("Cole", "Warner", "19cowarner@gmail.com", "password");
         MySQLUserDAO mySQLUserDAO = new MySQLUserDAO();
         mySQLUserDAO.create(user);
-
-
     }
 }

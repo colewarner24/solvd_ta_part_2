@@ -1,11 +1,7 @@
 package booking.factory;
 
-import booking.dao.AirlinesDAO;
-import booking.dao.AirportDAO;
-import booking.dao.UserDAO;
-import booking.dao.jdbc.MySQLAirlinesDAO;
-import booking.dao.jdbc.MySQLAirportDAO;
-import booking.dao.jdbc.MySQLUserDAO;
+import booking.dao.*;
+import booking.dao.jdbc.*;
 
 public class MySQLDAOFactory extends DAOFactory {
 
@@ -26,5 +22,50 @@ public class MySQLDAOFactory extends DAOFactory {
     @Override
     public AirportDAO getAirportDAO() {
         return new MySQLAirportDAO();
+    }
+
+    @Override
+    public BoardingGroupDAO getBoardingGroupDAO() {
+        return new MySQLBoardingGroupDAO();
+    }
+
+    @Override
+    public FlightDAO getFlightDAO() {
+        return new MySQLFlightDAO();
+    }
+
+    @Override
+    public BookingDAO getBookingDAO() {
+        return new MySQLBookingsDAO();
+    }
+
+    @Override
+    public FlightPricingDAO getFlightPricingDAO() {
+        return new MySQLFlightPricingDAO();
+    }
+
+    @Override
+    public LuggageDAO getLuggageDAO() {
+        return new MySQLLuggageDAO();
+    }
+
+    @Override
+    public PassengerDAO getPassengerDAO() {
+        return new MySQLPassengerDAO();
+    }
+
+    @Override
+    public PassengerSeatDAO getPassengerSeatDAO() {
+        return new MySQLPassengerSeatDAO();
+    }
+
+    @Override
+    public PaymentDAO getPaymentDAO() {
+        return new MySQLPaymentDAO();
+    }
+
+    @Override
+    public SeatDAO getSeatDAO() {
+        return new MySQLSeatDAO();
     }
 }
