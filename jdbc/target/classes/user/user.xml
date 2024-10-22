@@ -1,0 +1,23 @@
+<user>
+    <userId>1</userId>
+    <firstName>John</firstName>
+    <lastName>Doe</lastName>
+    <email>john.doe@example.com</email>
+    <password>password123</password>
+    <bookings>
+        <booking>
+            <id>1</id>
+            <userId>1</userId>
+            <flightId>101</flightId>
+            <bookingDate>2024-10-21T12:00:00</bookingDate>
+            <checkedIn>true</checkedIn>
+        </booking>
+        <booking>
+            <id>2</id>
+            <userId>1</userId>
+            <flightId>102</flightId>
+            <bookingDate>2024-10-22T14:00:00</bookingDate>
+            <checkedIn>false</checkedIn>
+        </booking>
+    </bookings>
+</user>

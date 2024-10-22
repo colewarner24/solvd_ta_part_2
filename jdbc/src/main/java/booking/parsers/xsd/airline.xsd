@@ -1,0 +1,9 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="airline" type="airlineType"/>
+    <xs:complexType name="airlineType">
+        <xs:sequence>
+            <xs:element name="airlineId" type="xs:int"/>
+            <xs:element name="airlineName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

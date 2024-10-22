@@ -6,6 +6,7 @@
 
 [model](https://github.com/colewarner24/solvd_ta_part_2/blob/main/travel_service_model.mwb)
 
+
 # 1. What database types do you know? What are the differences between them?
 relational database - structured using tables, columns and rows with relationships defined with primary and foriegn keys.
 non relational database - structured using documents (JSON), key-value pairings, graph structures, etc...

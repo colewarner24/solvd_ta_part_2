@@ -1,0 +1,18 @@
+<flight>
+    <flightId>1</flightId>
+    <airline>
+        <airlineId>1</airlineId>
+        <name>Delta</name>
+    </airline>
+    <departureAirport>
+        <departureAirportId>100</departureAirportId>
+        <name>ATL</name>
+    </departureAirport>
+    <arrivalAirport>
+        <arrivalAirportId>101</arrivalAirportId>
+        <name>LAX</name>
+    </arrivalAirport>
+    <departureTime>2024-10-21T12:00:00</departureTime>
+    <flightNumber>XY123</flightNumber>
+    <arrivalTime>2024-10-21T15:00:00</arrivalTime>
+</flight>
