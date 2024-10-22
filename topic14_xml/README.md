@@ -1,5 +1,9 @@
 # topic 14 xml and json
 
+[xml, xsd and json file are in resources](https://github.com/colewarner24/solvd_ta_part_2/tree/topic14_xml/jdbc/src/main/resources)
+
+[location for parsers](https://github.com/colewarner24/solvd_ta_part_2/tree/topic14_xml/jdbc/src/main/java/booking/parsers)
+
 # 1. What are the differences between Stax, SAX, DOM? When each parser will be used?
 The differences between Stax, SAX, and DOM are as follows:
 - Stax is a pull parser, SAX is an event-based parser, and DOM is a tree-based parser.
