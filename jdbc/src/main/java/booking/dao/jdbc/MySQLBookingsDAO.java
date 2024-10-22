@@ -71,7 +71,7 @@ public class MySQLBookingsDAO implements BookingDAO {
              PreparedStatement preparedStatement = connection.prepareStatement(BOOKINGS_UPDATE)) {
             preparedStatement.setInt(1, booking.getUserId());
             preparedStatement.setInt(2, booking.getFlightId());
-            preparedStatement.setTimestamp(3, booking.getBookingDate());
+            preparedStatement.setString(3, booking.getBookingDate());
             preparedStatement.setBoolean(4, booking.getCheckedIn());
             preparedStatement.setInt(5, booking.getId());
             preparedStatement.executeUpdate();
@@ -107,7 +107,7 @@ public class MySQLBookingsDAO implements BookingDAO {
                 rs.getInt("booking_id"),
                 rs.getInt("user_id"),
                 rs.getInt("flight_id"),
-                rs.getTimestamp("booking_date"),
+                rs.getString("booking_date"),
                 rs.getBoolean("checked_in")
         );
     }

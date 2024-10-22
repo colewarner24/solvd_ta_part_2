@@ -1,0 +1,9 @@
+{
+  "flightId": 1,
+  "airlineId": 1,
+  "departureAirportId": 100,
+  "arrivalAirportId": 101,
+  "departureTime": "2024-10-21T12:00:00",
+  "flightNumber": "XY123",
+  "arrivalTime": "2024-10-21T15:00:00"
+}

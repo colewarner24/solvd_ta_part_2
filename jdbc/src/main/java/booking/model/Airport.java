@@ -1,14 +1,41 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name="airport")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"airportId", "airportName", "airportCity", "airportCode", "airportCountry"})
 public class Airport {
 
+    @XmlElement
+    @JsonProperty("airportId")
     private int airportId;
+
+
+    @XmlElement
+    @JsonProperty("airportName")
     private String airportName;
+
+    @XmlElement
+    @JsonProperty("airportCity")
     private String airportCity;
+
+    @XmlElement
+    @JsonProperty("airportCode")
     private String airportCode;
+
+    @XmlElement
+    @JsonProperty("airportCountry")
     private String airportCountry;
+
+    public Airport() {}
 
     public Airport(int airportId, String airportName, String airportCity, String airportCode, String airportCountry) {
         this.airportId = airportId;

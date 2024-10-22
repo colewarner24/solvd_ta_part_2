@@ -1,11 +1,32 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name="luggage")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "passengerId", "luggageType"})
 public class Luggage {
+
+    @XmlElement
+    @JsonProperty("id")
     private Integer id;
+
+    @XmlElement
+    @JsonProperty("passengerId")
     private Integer passengerId;
+
+    @XmlElement
+    @JsonProperty("luggageType")
     private String luggageType;
+
+    public Luggage() {}
 
     public Luggage(Integer id, Integer passengerId, String luggageType) {
         this.id = id;

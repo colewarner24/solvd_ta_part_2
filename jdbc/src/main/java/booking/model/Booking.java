@@ -1,15 +1,40 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.*;
 import java.sql.Timestamp;
 
+@XmlRootElement(name="booking")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "userId", "flightId", "bookingDate", "checkedIn"})
 public class Booking {
+
+    @XmlElement
+    @JsonProperty("id")
     private Integer id;
+
+    @XmlElement
+    @JsonProperty("userId")
     private Integer userId;
+
+    @XmlElement
+    @JsonProperty("flightId")
     private Integer flightId;
-    private Timestamp bookingDate;
+
+    @XmlElement
+    @XmlSchemaType(name = "dateTime")
+    @JsonProperty("bookingDate")
+    private String bookingDate;
+
+    @XmlElement
+    @JsonProperty("checkedIn")
     private Boolean checkedIn;
 
-    public Booking(Integer id, Integer userId, Integer flightId, Timestamp bookingDate, Boolean checkedIn) {
+    public Booking() {}
+
+    public Booking(Integer id, Integer userId, Integer flightId, String bookingDate, Boolean checkedIn) {
         this.id = id;
         this.userId = userId;
         this.flightId = flightId;
@@ -17,7 +42,7 @@ public class Booking {
         this.checkedIn = checkedIn;
     }
 
-    public Booking(Integer userId, Integer flightId, Timestamp bookingDate, Boolean checkedIn) {
+    public Booking(Integer userId, Integer flightId, String bookingDate, Boolean checkedIn) {
         this.userId = userId;
         this.flightId = flightId;
         this.bookingDate = bookingDate;
@@ -49,11 +74,11 @@ public class Booking {
         this.flightId = flightId;
     }
 
-    public Timestamp getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(Timestamp bookingDate) {
+    public void setBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 

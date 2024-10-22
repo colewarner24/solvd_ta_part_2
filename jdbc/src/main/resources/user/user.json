@@ -1,0 +1,23 @@
+{
+  "userId": 1,
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "password": "password123",
+  "bookings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "flightId": 101,
+      "bookingDate": "2024-10-21T12:00:00",
+      "checkedIn": true
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "flightId": 102,
+      "bookingDate": "2024-10-22T14:00:00",
+      "checkedIn": false
+    }
+  ]
+}

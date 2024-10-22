@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "userId": 1001,
+  "flightId": 101,
+  "bookingDate": "2024-10-21T12:00:00",
+  "checkedIn": true
+}

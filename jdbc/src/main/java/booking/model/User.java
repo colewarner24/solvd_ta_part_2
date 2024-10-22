@@ -1,14 +1,46 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@XmlRootElement(name="user")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"userId", "firstName", "lastName", "email", "password", "bookings"})
 public class User {
 
+    @XmlElement
+    @JsonProperty("userId")
     private int userId;
+
+    @XmlElement
+    @JsonProperty("firstName")
     private String firstName;
+
+    @XmlElement
+    @JsonProperty("lastName")
     private String lastName;
+
+    @XmlElement
+    @JsonProperty("email")
     private String email;
+
+    @XmlElement
+    @JsonProperty("password")
     private String password;
+
+    @XmlElement(name = "booking")
+    @JsonProperty("bookings")
+    private List<Booking> bookings = new ArrayList<>();
+
+    public User() {}
 
     public User(int userId, String firstName, String lastName, String email, String password) {
         this.userId = userId;
@@ -74,6 +106,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", bookings=" + bookings +
                 '}';
     }
 

@@ -1,13 +1,40 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name="seat")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "flightId", "seatNumber", "seatClass", "available"})
 public class Seat {
+
+    @XmlElement
+    @JsonProperty("id")
     private Integer id;
+
+    @XmlElement
+    @JsonProperty("flightId")
     private Integer flightId;
+
+    @XmlElement
+    @JsonProperty("seatNumber")
     private String seatNumber;
+
+    @XmlElement
+    @JsonProperty("seatClass")
     private String seatClass;
+
+    @XmlElement
+    @JsonProperty("available")
     private boolean available;
+
+    public Seat() {}
 
     public Seat(Integer id, Integer flightId, String seatNumber, String seatClass, boolean available) {
         this.id = id;
@@ -24,7 +51,6 @@ public class Seat {
         this.available = available;
     }
 
-    // Getters and Setters
     public Integer getId() {
         return id;
     }

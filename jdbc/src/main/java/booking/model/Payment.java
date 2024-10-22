@@ -1,13 +1,37 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+@XmlRootElement(name="payment")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "bookingId", "amount", "paymentDate"})
 public class Payment {
+
+    @XmlElement
+    @JsonProperty("id")
     private Integer id;
+
+    @XmlElement
+    @JsonProperty("bookingId")
     private Integer bookingId;
+
+    @XmlElement
+    @JsonProperty("amount")
     private Double amount;
+
+    @XmlElement
+    @JsonProperty("paymentDate")
     private Timestamp paymentDate;
+
+    public Payment() {}
 
     public Payment(Integer id, Integer bookingId, Double amount, Timestamp paymentDate) {
         this.id = id;

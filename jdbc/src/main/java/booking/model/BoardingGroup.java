@@ -1,13 +1,36 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name="boardingGroup")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"boardingGroupId", "flightId", "group", "position"})
 public class BoardingGroup {
 
+    @XmlElement
+    @JsonProperty("boardingGroupId")
     private int boardingGroupId;
+
+    @XmlElement
+    @JsonProperty("flightId")
     private int flightId;
+
+    @XmlElement
+    @JsonProperty("group")
     private String group;
+
+    @XmlElement
+    @JsonProperty("position")
     private int position;
+
+    public BoardingGroup() {}
 
     public BoardingGroup(int boardingGroupId, int flightId, String group, int position) {
         this.boardingGroupId = boardingGroupId;

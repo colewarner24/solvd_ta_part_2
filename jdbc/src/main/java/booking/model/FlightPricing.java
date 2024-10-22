@@ -1,12 +1,36 @@
 package booking.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name="flightPricing")
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonPropertyOrder({"id", "flightId", "price", "flightClass"})
 public class FlightPricing {
+
+    @XmlElement
+    @JsonProperty("id")
     private Integer id;
+
+    @XmlElement
+    @JsonProperty("flightId")
     private Integer flightId;
+
+    @XmlElement
+    @JsonProperty("price")
     private Double price;
+
+    @XmlElement
+    @JsonProperty("flightClass")
     private String flightClass;
+
+    public FlightPricing() {}
 
     public FlightPricing(Integer id, Integer flightId, Double price, String flightClass) {
         this.id = id;
