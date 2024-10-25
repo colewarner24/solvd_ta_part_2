@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.LuggageMapper">
+
+    <!-- Insert a new luggage into luggage table -->
+    <insert id="create" parameterType="booking.model.Luggage" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO luggage (passenger_id, luggage_type)
+        VALUES (#{passengerId}, #{luggageType})
+    </insert>
+
+    <!-- Select a luggage from luggage table by id -->
+    <select id="findById" resultMap="luggageResultMap" parameterType="int">
+        SELECT * FROM luggage WHERE luggage_id = #{id}
+    </select>
+
+    <!-- Update a luggage in luggage table by id -->
+    <update id="update" parameterType="booking.model.Luggage">
+        UPDATE luggage
+        SET passenger_id = #{passengerId}, luggage_type = #{luggageType}
+        WHERE luggage_id = #{id}
+    </update>
+
+    <!-- Delete a luggage from luggage table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM luggage WHERE luggage_id = #{id}
+    </delete>
+
+    <!-- Delete all luggage from the luggage table -->
+    <delete id="deleteAll">
+        DELETE FROM luggage
+    </delete>
+
+    <!-- Map result to the luggage model -->
+    <resultMap id="luggageResultMap" type="booking.model.Luggage">
+        <id property="id" column="luggage_id"/>
+        <result property="passengerId" column="passenger_id"/>
+        <result property="luggageType" column="luggage_type"/>
+    </resultMap>
+
+</mapper>

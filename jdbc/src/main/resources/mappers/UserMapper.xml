@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.UserMapper">
+
+    <!-- Insert a new user into user table -->
+    <insert id="create" parameterType="booking.model.User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user (first_name, last_name, email, password)
+        VALUES (#{firstName}, #{lastName}, #{email}, #{password})
+    </insert>
+
+    <!-- Select a user from user table by id -->
+    <select id="findById" resultMap="userResultMap" parameterType="int">
+        SELECT * FROM user WHERE user_id = #{userId}
+    </select>
+
+    <!-- Update a user in user table by id -->
+    <update id="update" parameterType="booking.model.User">
+        UPDATE user
+        SET first_name = #{firstName}, last_name = #{lastName}, email = #{email}, password = #{password}
+        WHERE user_id = #{userId}
+    </update>
+
+    <!-- Delete a user from user table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM user WHERE user_id = #{userId}
+    </delete>
+
+    <!-- delete all users from the table -->
+    <delete id="deleteAll">
+        DELETE FROM user
+    </delete>
+
+    <!-- map result to the user model -->
+    <resultMap id="userResultMap" type="booking.model.User">
+        <id property="userId" column="user_id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+</mapper>

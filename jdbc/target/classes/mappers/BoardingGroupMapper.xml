@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.BoardingGroupMapper">
+
+    <!-- Insert a new boarding group into boarding_groups table -->
+    <insert id="create" parameterType="booking.model.BoardingGroup" useGeneratedKeys="true" keyProperty="boardingGroupId">
+        INSERT INTO boardinggroup (flight_id, `group`, position)
+        VALUES (#{flightId}, #{group}, #{position})
+    </insert>
+
+    <!-- Select a boarding group from boarding_groups table by id -->
+    <select id="findById" resultMap="boardingGroupResultMap" parameterType="int">
+        SELECT * FROM boardinggroup WHERE boarding_group_id = #{boardingGroupId}
+    </select>
+
+    <!-- Update a boarding group in boardinggroup table by id -->
+    <update id="update" parameterType="booking.model.BoardingGroup">
+        UPDATE boardinggroup
+        SET flight_id = #{flightId}, `group` = #{group}, position = #{position}
+        WHERE boarding_group_id = #{boardingGroupId}
+    </update>
+
+    <!-- Delete a boarding group from boardinggroup table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM boardinggroup WHERE boarding_group_id = #{boardingGroupId}
+    </delete>
+
+    <!-- Delete all boarding groups from the table -->
+    <delete id="deleteAll">
+        DELETE FROM boardinggroup
+    </delete>
+
+    <!-- Map result to the boarding group model -->
+    <resultMap id="boardingGroupResultMap" type="booking.model.BoardingGroup">
+        <id property="boardingGroupId" column="boarding_group_id"/>
+        <result property="flightId" column="flight_id"/>
+        <result property="group" column="group"/>
+        <result property="position" column="position"/>
+    </resultMap>
+
+</mapper>

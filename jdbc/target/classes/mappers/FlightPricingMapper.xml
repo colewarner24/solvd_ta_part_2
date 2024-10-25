@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.FlightPricingMapper">
+
+    <!-- Insert a new flight pricing into flight_pricing table -->
+    <insert id="create" parameterType="booking.model.FlightPricing" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO flightpricings (flight_id, price, class)
+        VALUES (#{flightId}, #{price}, #{flightClass})
+    </insert>
+
+    <!-- Select flight pricing from flight_pricing table by id -->
+    <select id="findById" resultMap="flightPricingResultMap" parameterType="int">
+        SELECT * FROM flightpricings WHERE flight_pricing_id = #{id}
+    </select>
+
+    <!-- Update flight pricing in flight_pricing table by id -->
+    <update id="update" parameterType="booking.model.FlightPricing">
+        UPDATE flightpricings
+        SET flight_id = #{flightId}, price = #{price}, class = #{flightClass}
+        WHERE flight_pricing_id = #{id}
+    </update>
+
+    <!-- Delete flight pricing from flight_pricing table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM flightpricings WHERE flight_pricing_id = #{id}
+    </delete>
+
+    <!-- Delete all flight pricing records from the flight_pricing table -->
+    <delete id="deleteAll">
+        DELETE FROM flightpricings
+    </delete>
+
+    <!-- Map result to the flight pricing model -->
+    <resultMap id="flightPricingResultMap" type="booking.model.FlightPricing">
+        <id property="id" column="flight_pricing_id"/>
+        <result property="flightId" column="flight_id"/>
+        <result property="price" column="price"/>
+        <result property="flightClass" column="class"/>
+    </resultMap>
+
+</mapper>

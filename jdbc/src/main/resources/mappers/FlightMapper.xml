@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.FlightMapper">
+
+    <!-- Insert a new flight into flight table -->
+    <insert id="create" parameterType="booking.model.Flight" useGeneratedKeys="true" keyProperty="flightId">
+        INSERT INTO flights (airline_id, departure_airport_id, arrival_airport_id, departure_time, flight_number, arrival_time)
+        VALUES (#{airlineId}, #{departureAirportId}, #{arrivalAirportId}, #{departureTime}, #{flightNumber}, #{arrivalTime})
+    </insert>
+
+    <!-- Select a flight from flight table by id -->
+    <select id="findById" resultMap="flightResultMap" parameterType="int">
+        SELECT * FROM flights WHERE flight_id = #{flightId}
+    </select>
+
+    <!-- Update a flight in flight table by id -->
+    <update id="update" parameterType="booking.model.Flight">
+        UPDATE flights
+        SET airline_id = #{airlineId}, departure_airport_id = #{departureAirportId},
+            arrival_airport_id = #{arrivalAirportId}, departure_time = #{departureTime},
+            flight_number = #{flightNumber}, arrival_time = #{arrivalTime}
+        WHERE flight_id = #{flightId}
+    </update>
+
+    <!-- Delete a flight from flight table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM flights WHERE flight_id = #{flightId}
+    </delete>
+
+    <!-- Delete all flights from the flight table -->
+    <delete id="deleteAll">
+        DELETE FROM flights
+    </delete>
+
+    <!-- map result to the flight model -->
+    <resultMap id="flightResultMap" type="booking.model.Flight">
+        <id property="flightId" column="flight_id"/>
+        <result property="airlineId" column="airline_id"/>
+        <result property="departureAirportId" column="departure_airport_id"/>
+        <result property="arrivalAirportId" column="arrival_airport_id"/>
+        <result property="departureTime" column="departure_time"/>
+        <result property="flightNumber" column="flight_number"/>
+        <result property="arrivalTime" column="arrival_time"/>
+    </resultMap>
+
+</mapper>

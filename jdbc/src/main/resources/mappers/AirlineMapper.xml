@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.AirlineMapper">
+
+    <!-- Insert a new airline into airlines table -->
+    <insert id="create" parameterType="booking.model.Airline" useGeneratedKeys="true" keyProperty="airlineId">
+        INSERT INTO airlines (airline_name)
+        VALUES (#{airlineName})
+    </insert>
+
+    <!-- Select an airline from airlines table by id -->
+    <select id="findById" resultMap="airlineResultMap" parameterType="int">
+        SELECT * FROM airlines WHERE airline_id = #{airlineId}
+    </select>
+
+    <!-- Update an airline in airlines table by id -->
+    <update id="update" parameterType="booking.model.Airline">
+        UPDATE airlines
+        SET airline_name = #{airlineName}
+        WHERE airline_id = #{airlineId}
+    </update>
+
+    <!-- Delete an airline from airlines table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM airlines WHERE airline_id = #{airlineId}
+    </delete>
+
+    <!-- delete all airlines from the table -->
+    <delete id="deleteAll">
+        DELETE FROM airlines
+    </delete>
+
+    <!-- map result to the airline model -->
+    <resultMap id="airlineResultMap" type="booking.model.Airline">
+        <id property="airlineId" column="airline_id"/>
+        <result property="airlineName" column="airline_name"/>
+    </resultMap>
+
+</mapper>

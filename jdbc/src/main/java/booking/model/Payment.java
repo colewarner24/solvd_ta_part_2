@@ -15,6 +15,8 @@ import java.util.Objects;
 @JsonPropertyOrder({"id", "bookingId", "amount", "paymentDate"})
 public class Payment {
 
+    long toleranceInMillis = 10000;
+
     @XmlElement
     @JsonProperty("id")
     private Integer id;
@@ -87,7 +89,7 @@ public class Payment {
         return Objects.equals(id, payment.id) &&
                 Objects.equals(bookingId, payment.bookingId) &&
                 Objects.equals(amount, payment.amount) &&
-                Objects.equals(paymentDate, payment.paymentDate);
+                (Math.abs(paymentDate.getTime() - payment.paymentDate.getTime()) <= toleranceInMillis);
     }
 
     @Override
