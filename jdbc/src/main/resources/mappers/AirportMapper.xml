@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.AirportMapper">
+
+    <!-- Insert a new airport into airports table -->
+    <insert id="create" parameterType="booking.model.Airport" useGeneratedKeys="true" keyProperty="airportId">
+        INSERT INTO airports (airport_name, airport_city, airport_code, airport_country)
+        VALUES (#{airportName}, #{airportCity}, #{airportCode}, #{airportCountry})
+    </insert>
+
+    <!-- Select an airport from airports table by id -->
+    <select id="findById" resultMap="airportResultMap" parameterType="int">
+        SELECT * FROM airports WHERE airport_id = #{airportId}
+    </select>
+
+    <!-- Update an airport in airports table by id -->
+    <update id="update" parameterType="booking.model.Airport">
+        UPDATE airports
+        SET airport_name = #{airportName}, airport_city = #{airportCity}, airport_code = #{airportCode}, airport_country = #{airportCountry}
+        WHERE airport_id = #{airportId}
+    </update>
+
+    <!-- Delete an airport from airports table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM airports WHERE airport_id = #{airportId}
+    </delete>
+
+    <!-- Delete all airports from the table -->
+    <delete id="deleteAll">
+        DELETE FROM airports
+    </delete>
+
+    <!-- Map result to the airport model -->
+    <resultMap id="airportResultMap" type="booking.model.Airport">
+        <id property="airportId" column="airport_id"/>
+        <result property="airportName" column="airport_name"/>
+        <result property="airportCity" column="airport_city"/>
+        <result property="airportCode" column="airport_code"/>
+        <result property="airportCountry" column="airport_country"/>
+    </resultMap>
+
+</mapper>

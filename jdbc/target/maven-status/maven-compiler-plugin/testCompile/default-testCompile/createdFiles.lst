@@ -1,0 +1,9 @@
+mybatis\BoardingGroupTest.class
+jdbc\jdbcusertests.class
+jdbc\jdbcairlinetests.class
+booking\service\jdbcairporttests.class
+mybatis\AirlineTest.class
+mybatis\UserTest.class
+mybatis\AirportTest.class
+jdbc\jdbcBoardingGroupTests.class
+jdbc\jdbcflighttests.class

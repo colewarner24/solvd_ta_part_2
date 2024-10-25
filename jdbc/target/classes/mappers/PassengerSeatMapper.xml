@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.PassengerSeatMapper">
+
+    <!-- Insert a new passenger seat into the passenger_seat table -->
+    <insert id="create" parameterType="booking.model.PassengerSeat" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO passengerseats (passenger_id, seat_id)
+        VALUES (#{passengerId}, #{seatId})
+    </insert>
+
+    <!-- Select a passenger seat from the passenger_seat table by id -->
+    <select id="findById" resultMap="passengerSeatResultMap" parameterType="int">
+        SELECT * FROM passengerseats WHERE passenger_seat_id = #{id}
+    </select>
+
+    <!-- Update a passenger seat in the passenger_seat table by id -->
+    <update id="update" parameterType="booking.model.PassengerSeat">
+        UPDATE passengerseats
+        SET passenger_id = #{passengerId}, seat_id = #{seatId}
+        WHERE passenger_seat_id = #{id}
+    </update>
+
+    <!-- Delete a passenger seat from the passenger_seat table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM passengerseats WHERE passenger_seat_id = #{id}
+    </delete>
+
+    <!-- Delete all passenger seats from the passenger_seat table -->
+    <delete id="deleteAll">
+        DELETE FROM passengerseats
+    </delete>
+
+    <!-- Map result to the passenger seat model -->
+    <resultMap id="passengerSeatResultMap" type="booking.model.PassengerSeat">
+        <id property="id" column="passenger_seat_id"/>
+        <result property="passengerId" column="passenger_id"/>
+        <result property="seatId" column="seat_id"/>
+    </resultMap>
+
+</mapper>

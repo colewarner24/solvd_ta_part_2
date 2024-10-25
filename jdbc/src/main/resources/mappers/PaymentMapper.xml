@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking.mybatis.mappers.PaymentMapper">
+
+    <!-- Insert a new payment into the payments table -->
+    <insert id="create" parameterType="booking.model.Payment" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO payments (booking_id, amount, payment_date)
+        VALUES (#{bookingId}, #{amount}, #{paymentDate})
+    </insert>
+
+    <!-- Select a payment from the payments table by id -->
+    <select id="findById" resultMap="paymentResultMap" parameterType="int">
+        SELECT * FROM payments WHERE payment_id = #{id}
+    </select>
+
+    <!-- Update a payment in the payments table by id -->
+    <update id="update" parameterType="booking.model.Payment">
+        UPDATE payments
+        SET booking_id = #{bookingId}, amount = #{amount}, payment_date = #{paymentDate}
+        WHERE payment_id = #{id}
+    </update>
+
+    <!-- Delete a payment from the payments table by id -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM payments WHERE payment_id = #{id}
+    </delete>
+
+    <!-- Delete all payments from the table -->
+    <delete id="deleteAll">
+        DELETE FROM payments
+    </delete>
+
+    <!-- Map result to the payment model -->
+    <resultMap id="paymentResultMap" type="booking.model.Payment">
+        <id property="id" column="payment_id"/>
+        <result property="bookingId" column="booking_id"/>
+        <result property="amount" column="amount"/>
+        <result property="paymentDate" column="payment_date"/>
+    </resultMap>
+
+</mapper>

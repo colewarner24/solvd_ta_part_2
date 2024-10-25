@@ -26,6 +26,10 @@ public class PassengerSeat {
     @JsonProperty("seatNumber")
     private String seatNumber;
 
+    @XmlElement
+    @JsonProperty("seatId")
+    private Integer seatId;
+
     public PassengerSeat() {}
 
     public PassengerSeat(Integer id, Integer passengerId, String seatNumber) {
@@ -39,6 +43,11 @@ public class PassengerSeat {
         this.seatNumber = seatNumber;
     }
 
+    public PassengerSeat(Integer passengerId, Integer seatId) {
+        this.passengerId = passengerId;
+        this.seatId = seatId;
+    }
+
     // Getters and Setters
     public Integer getId() {
         return id;
@@ -47,6 +56,10 @@ public class PassengerSeat {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Integer getSeatId(){return this.seatId;}
+
+    public void setSeatId(Integer seatId){this.seatId = seatId;}
 
     public Integer getPassengerId() {
         return passengerId;
