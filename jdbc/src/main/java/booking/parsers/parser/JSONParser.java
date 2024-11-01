@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-public class JSONParser {
+public class JSONParser implements Parser {
 
     public User parseUserJSON(String jsonPath) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -33,7 +33,7 @@ public class JSONParser {
         return objectMapper.readValue(new File(jsonPath), Booking.class);
     }
 
-    public Object parseJSON(String jsonPath, String className) throws IOException {
+    public Object parse(String jsonPath, String className) throws IOException {
         return switch (className) {
             case "user" -> parseUserJSON(jsonPath);
             case "airline" -> parseAirlineJSON(jsonPath);
