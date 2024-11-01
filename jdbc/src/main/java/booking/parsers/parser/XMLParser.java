@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
-public class XMLParser {
+public class XMLParser implements Parser {
 
     public User parseUserXML(String xmlPath) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(User.class);
@@ -39,7 +39,7 @@ public class XMLParser {
         return (Booking) unmarshaller.unmarshal(new File(xmlPath));
     }
 
-    public Object parseXML(String xmlPath, String className) throws JAXBException {
+    public Object parse(String xmlPath, String className) throws JAXBException {
         return switch (className) {
             case "user" -> parseUserXML(xmlPath);
             case "airline" -> parseAirlineXML(xmlPath);
